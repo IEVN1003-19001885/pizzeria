@@ -1,0 +1,51 @@
+<div class="grid grid-cols-11 grid-rows-5 gap-3">
+  <div class="col-span-9 row-span-5 col-start-2 bg-white white:bg-gray-900 p-4 rounded-lg">
+    <div class="relative overflow-x-auto">
+      <h1 class="font-bold text-gray-900 white:text-white"></h1>
+      <br />
+      <table class="w-full text-sm text-left rtl:text-right text-gray-500 white:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-100 white:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3">Nombre</th>
+            <th scope="col" class="px-6 py-3">Tamaño</th>
+            <th scope="col" class="px-6 py-3">Cantidad</th>
+            <th scope="col" class="px-6 py-3">Ingredientes</th>
+            <th scope="col" class="px-6 py-3">Fecha</th>
+            <th scope="col" class="px-6 py-3">Subtotal</th>
+            <th scope="col" class="px-6 py-3">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pedido of pedidos" class="bg-dark border-b white:bg-gray-800 dark:border-gray-700">
+            <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap white:text-white">
+              {{ pedido.name }}
+            </td>
+            <td class="px-6 py-4">{{ pedido.pizzaSize }}</td>
+            <td class="px-6 py-4">{{ pedido.cantidad }}</td>
+            <td class="px-6 py-4">
+              <span *ngFor="let ingrediente of pedido.ingredientes">{{ ingrediente }}</span>
+            </td>
+            <td class="px-6 py-4">{{ pedido.fecha }}</td>
+            <td class="px-6 py-4">{{ pedido.precio }}</td>
+            <td class="px-6 py-4">
+              <button (click)="eliminarPedido(pedido)" class="text-black">Delete</button>
+            </td>
+          </tr>
+          <tr class="bg-pink-50 dark:bg-white">
+            <td colspan="5" class="px-6 py-4 font-bold text-right text-gray-900 dark:text-white">Total</td>
+            <td class="px-6 py-4 font-bold">{{ calcularTotal() }}</td>
+            <td class="px-6 py-4"></td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <button
+        type="button"
+        (click)="terminarPedido()"
+        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
+      >
+        Terminar
+      </button>
+    </div>
+  </div>
+</div>

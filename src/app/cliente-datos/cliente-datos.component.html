@@ -1,0 +1,145 @@
+<form [formGroup]="ventasForm">
+  <div class="grid grid-cols-5 grid-rows-4 gap-5">
+    <!-- Nombre del cliente -->
+    <div class="col-start-2 row-start-1">
+      <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Nombre"
+        required
+      />
+    </div>
+
+    <!-- Dirección del cliente -->
+    <div class="col-start-3 row-start-1">
+      <label for="direccion" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Dirección</label>
+      <input
+        type="text"
+        id="direccion"
+        formControlName="direccion"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Dirección"
+        required
+      />
+    </div>
+
+    <!-- Teléfono del cliente -->
+    <div class="col-start-4 row-start-1">
+      <label for="telefono" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Teléfono</label>
+      <input
+        type="text"
+        id="telefono"
+        formControlName="telefono"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        placeholder="Teléfono"
+        required
+      />
+    </div>
+
+    <!-- Tamaño de la pizza -->
+    <div class="col-start-2 row-start-2 row-span-2">
+      <fieldset>
+        <legend class="sr-only">Tamaño pizza</legend>
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Tamaño pizza</label>
+        <div class="flex items-center mb-4">
+          <input
+            id="chica"
+            type="radio"
+            formControlName="pizzaSize"
+            value="Chica"
+            class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300"
+          />
+          <label for="chica" class="block ms-2 text-sm font-medium text-gray-900 dark:text-black">Chica $40</label>
+        </div>
+        <div class="flex items-center mb-4">
+          <input
+            id="mediana"
+            type="radio"
+            formControlName="pizzaSize"
+            value="Mediana"
+            class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300"
+          />
+          <label for="mediana" class="block ms-2 text-sm font-medium text-gray-900 dark:text-black">Mediana $80</label>
+        </div>
+        <div class="flex items-center mb-4">
+          <input
+            id="grande"
+            type="radio"
+            formControlName="pizzaSize"
+            value="Grande"
+            class="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300"
+          />
+          <label for="grande" class="block ms-2 text-sm font-medium text-gray-900 dark:text-black">Grande $120</label>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Ingredientes -->
+    <div class="col-start-3 row-start-2 row-span-2">
+      <div formGroupName="ingredientes" class="relative p-4 border border-gray-300 bg-gray-50 rounded-lg">
+        <span class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-50 px-2 text-sm font-medium text-gray-900">
+          Ingredientes
+        </span>
+        <div class="flex items-center mb-3">
+          <input
+            id="ingrediente-jamon"
+            type="checkbox"
+            formControlName="jamon"
+            class="bg-gray-50 border border-gray-300 text-blue-600 focus:ring-blue-500 rounded"
+          />
+          <label for="ingrediente-jamon" class="ml-2 text-sm font-medium text-gray-900">Jamon $10</label>
+        </div>
+        <div class="flex items-center mb-3">
+          <input
+            id="ingrediente-pina"
+            type="checkbox"
+            formControlName="pina"
+            class="bg-gray-50 border border-gray-300 text-blue-600 focus:ring-blue-500 rounded"
+          />
+          <label for="ingrediente-pina" class="ml-2 text-sm font-medium text-gray-900">Piña $10</label>
+        </div>
+        <div class="flex items-center mb-3">
+          <input
+            id="ingrediente-champinones"
+            type="checkbox"
+            formControlName="champinones"
+            class="bg-gray-50 border border-gray-300 text-blue-600 focus:ring-blue-500 rounded"
+          />
+          <label for="ingrediente-champinones" class="ml-2 text-sm font-medium text-gray-900">Champiñones $10</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Número de Pizzas -->
+    <div class="col-start-4 row-start-2">
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Número de Pizzas</label>
+      <input
+        type="text"
+        formControlName="cantidad"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        required
+      />
+
+       <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Fecha</label>
+      <input
+        type="date"
+        formControlName="fecha"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        required
+      />
+      
+      <button
+        type="button"
+        (click)="agregarPedido()"
+        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
+      >
+        Agregar
+      </button>
+    </div>
+
+    
+  </div>
+</form>
